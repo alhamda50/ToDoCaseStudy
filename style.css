@@ -1,0 +1,20 @@
+body{
+    background-color: #E1D7C6;
+}
+
+
+.buttonText{
+    color: white;
+    text-decoration: none;
+}
+
+.btn{
+    background-color: #674636;
+    border: none;
+}
+
+
+.container{
+    width: 95%;
+    background-color: white;
+}
