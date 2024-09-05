@@ -2,26 +2,14 @@
 const todoListElement = document.getElementById('todo-list');
 let completedCount = 0; // Keep track of completed tasks
 
-// Hardcoded normal English descriptions
-const descriptions = [
-    'Buy groceries',
-    'Read a book',
-    'Go for a walk',
-    'Complete homework',
-    'Cook dinner',
-    'Call a friend',
-    'Do laundry',
-    'Clean the house',
-    'Prepare for a meeting',
-    'Exercise'
-];
 
+// Function to fetch todos from the API
 // Function to fetch todos from the API
 function fetchTodos() {
     fetch('https://jsonplaceholder.typicode.com/todos?_limit=10') // Fetch only 10 todos
         .then(response => response.json())
         .then(todos => {
-            todos.forEach((todo, index) => {
+            todos.forEach(todo => {
                 // Create a list item for each todo
                 const li = document.createElement('li');
                 li.className = 'list-group-item d-flex justify-content-between align-items-center';
@@ -41,12 +29,10 @@ function fetchTodos() {
                     checkForFiveCompleted(); // Check if 5 tasks are completed
                 });
 
-                // Use normal English descriptions for the todo titles
-                const todoTitle = descriptions[index] || 'Task ' + (index + 1);
+                // Use API title for the todo
                 
-                // Append the checkbox and title to the list item
+                li.appendChild(document.createTextNode(todo.title));
                 li.appendChild(checkbox);
-                li.appendChild(document.createTextNode(todoTitle));
 
                 // Append the list item to the todo list
                 todoListElement.appendChild(li);
@@ -54,6 +40,7 @@ function fetchTodos() {
         })
         .catch(error => console.error('Error fetching todos:', error));
 }
+
 
 // Function to check if 5 todos are completed
 function checkForFiveCompleted() {
