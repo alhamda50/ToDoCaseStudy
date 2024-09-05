@@ -11,6 +11,11 @@ body{
 .btn{
     background-color: #674636;
     border: none;
+    color: white;
+}
+
+.btn:hover{
+    background-color: #E1D7C6;
 }
 
 
